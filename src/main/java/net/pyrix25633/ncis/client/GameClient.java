@@ -1,15 +1,15 @@
-package net.pyrix25633.ncis;
+package net.pyrix25633.ncis.client;
 
-import net.pyrix25633.ncis.gui.GameWindow;
+import net.pyrix25633.ncis.client.gui.GameWindow;
 
-public class Game {
+public class GameClient {
     private final GameWindow window;
     public static final String version = "0.1.0";
 
     /**
      * Constructor
      */
-    public Game() {
+    public GameClient() {
         window = new GameWindow();
     }
 }
