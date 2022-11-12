@@ -1,6 +1,6 @@
 package net.pyrix25633.ncis.server;
 
-import net.pyrix25633.ncis.component.World;
+import net.pyrix25633.ncis.world.World;
 
 import java.util.ArrayList;
 import java.util.UUID;

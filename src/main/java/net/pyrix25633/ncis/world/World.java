@@ -1,5 +1,6 @@
-package net.pyrix25633.ncis.component;
+package net.pyrix25633.ncis.world;
 
+import net.pyrix25633.ncis.component.Component;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
