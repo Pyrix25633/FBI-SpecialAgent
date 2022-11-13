@@ -39,6 +39,15 @@ public class Position {
     }
 
     /**
+     * Method to set both coordinates
+     * @param position The <code>Position</code>
+     */
+    public void set(Position position) {
+        this.x = position.getX();
+        this.y = position.getY();
+    }
+
+    /**
      * Method to get the x coordinate
      * @return The <code>int</code> x coordinate
      */

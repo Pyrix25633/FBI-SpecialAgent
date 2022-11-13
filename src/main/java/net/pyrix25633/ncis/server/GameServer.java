@@ -61,10 +61,45 @@ public class GameServer {
     }
 
     /**
-     * Method to disconnect a <code>ConnectedClient</code>
-     * @param connectedClient The <code>ConnectedClient</code>
+     * Method to get a <code>ConnectedClient</code>
+     * @param uuid The <code>UUID</code>
+     * @return The <code>Position</code>
      */
-    public void disconnectClient(ConnectedClient connectedClient) {
-        connectedClients.remove(connectedClient);
+    public Position getConnectedClientPosition(UUID uuid) {
+        int i = findConnectedClient(uuid);
+        if(i != -1) return connectedClients.get(i).getPosition();
+        return null;
+    }
+
+    /**
+     * Method to set a <code>ConnectedClient</code> <code>Position</code>
+     * @param connectedClient The <code>ConnectedClient</code>, that contains both the
+     *                        <code>UUID</code> and the <code>Position</code>
+     */
+    public void setConnectedClientPosition(ConnectedClient connectedClient) {
+        int i = findConnectedClient(connectedClient.getUuid());
+        if(i != -1) connectedClients.get(i).getPosition().set(connectedClient.getPosition());
+    }
+
+    /**
+     * Method to disconnect a <code>ConnectedClient</code>
+     * @param uuid The <code>UUID</code>
+     */
+    public void disconnectClient(UUID uuid) {
+        int i = findConnectedClient(uuid);
+        if(i != -1) connectedClients.remove(i);
+        removeUUID(uuid);
+    }
+
+    /**
+     * Method to find a <code>ConnectedClient</code>
+     * @param uuid The <code>UUID</code>
+     * @return The <code>int</code> index, -1 if not found
+     */
+    private int findConnectedClient(UUID uuid) {
+        for(int i = 0; i < connectedClients.size(); i++) {
+            if(connectedClients.get(i).getUuid() == uuid) return i;
+        }
+        return -1;
     }
 }

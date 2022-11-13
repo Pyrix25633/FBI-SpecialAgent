@@ -20,6 +20,10 @@ public class Main {
 
         gameServer.getWorld().add(new Component(gameClient.getConnectedClient().getPosition(), new HitBox(100, 100)));
 
+        gameClient.getConnectedClient().getPosition().set(10, 20);
+
+        gameServer.setConnectedClientPosition(gameClient.getConnectedClient());
+
         gameClient.repaint();
     }
 }
