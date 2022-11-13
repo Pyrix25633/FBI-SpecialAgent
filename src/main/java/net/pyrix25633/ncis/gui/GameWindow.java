@@ -1,4 +1,4 @@
-package net.pyrix25633.ncis.client.gui;
+package net.pyrix25633.ncis.gui;
 
 import net.pyrix25633.ncis.client.GameClient;
 
