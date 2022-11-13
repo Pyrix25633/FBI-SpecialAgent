@@ -1,6 +1,7 @@
 package net.pyrix25633.ncis.client;
 
 import net.pyrix25633.ncis.Main;
+import net.pyrix25633.ncis.gui.GUIHelper;
 import net.pyrix25633.ncis.gui.GameWindow;
 
 public class GameClient {
@@ -25,9 +26,18 @@ public class GameClient {
     }
 
     /**
+     * Method to get the <code>GameWindow</code>
+     * @return The <code>GameWindow</code>
+     */
+    public GameWindow getWindow() {
+        return window;
+    }
+
+    /**
      * Method to repaint the <code>GameWindow</code>
      */
     public void repaint() {
+        GUIHelper.calculateScale();
         window.repaint();
     }
 }

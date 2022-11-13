@@ -1,6 +1,7 @@
 package net.pyrix25633.ncis.component;
 
 import net.pyrix25633.ncis.Main;
+import net.pyrix25633.ncis.gui.GUIHelper;
 import net.pyrix25633.ncis.util.HitBox;
 import net.pyrix25633.ncis.util.Position;
 
@@ -30,7 +31,11 @@ public class Component extends JComponent {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.fill3DRect(position.getX(), position.getY(), hitBox.getWidth(), hitBox.getHeight(), false);
+        Position calculatedPosition = GUIHelper.calculateWindowPosition(position);
+        HitBox calculatedHitBox = GUIHelper.calculateHitBox(hitBox);
+
+        g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
+                calculatedHitBox.getWidth(), calculatedHitBox.getWidth(), false);
     }
 
     /**
