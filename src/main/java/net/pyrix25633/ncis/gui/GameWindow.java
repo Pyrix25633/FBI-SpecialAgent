@@ -21,5 +21,6 @@ public class GameWindow extends JFrame {
         this.add(panel);
 
         this.setVisible(true);
+        panel.requestFocus();
     }
 }
