@@ -1,39 +1,39 @@
 package net.pyrix25633.ncis.util;
 
 public class Position {
-    private int x, y;
+    private float x, y;
 
     /**
      * Constructor
-     * @param x The <code>int</code> x coordinate
-     * @param y The <code>int</code> y coordinate
+     * @param x The <code>float</code> x coordinate
+     * @param y The <code>float</code> y coordinate
      */
-    public Position(int x, int y) {
+    public Position(float x, float y) {
         set(x, y);
     }
 
     /**
      * Method to set the x coordinate
-     * @param x The <code>int</code> x coordinate
+     * @param x The <code>float</code> x coordinate
      */
-    public void setX(int x) {
+    public void setX(float x) {
         this.x = x;
     }
 
     /**
      * Method to set the y coordinate
-     * @param y The <code>int</code> y coordinate
+     * @param y The <code>float</code> y coordinate
      */
-    public void setY(int y) {
+    public void setY(float y) {
         this.y = y;
     }
 
     /**
      * Method to set both coordinates
-     * @param x The <code>int</code> x coordinate
-     * @param y The <code>int</code> y coordinate
+     * @param x The <code>float</code> x coordinate
+     * @param y The <code>float</code> y coordinate
      */
-    public void set(int x, int y) {
+    public void set(float x, float y) {
         this.x = x;
         this.y = y;
     }
@@ -47,19 +47,24 @@ public class Position {
         this.y = position.getY();
     }
 
+    public void move(Vector vector) {
+        this.x += vector.getWidth();
+        this.y += vector.getHeight();
+    }
+
     /**
      * Method to get the x coordinate
-     * @return The <code>int</code> x coordinate
+     * @return The <code>float</code> x coordinate
      */
-    public int getX() {
+    public float getX() {
         return x;
     }
 
     /**
      * Method to get the y coordinate
-     * @return The <code>int</code> y coordinate
+     * @return The <code>float</code> y coordinate
      */
-    public int getY() {
+    public float getY() {
         return y;
     }
 }

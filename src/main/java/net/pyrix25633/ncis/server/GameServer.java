@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class GameServer {
-    private final ArrayList<UUID> uuids;
     private final World world;
     private final ArrayList<ConnectedClient> connectedClients;
 
@@ -16,7 +15,6 @@ public class GameServer {
      * Constructor
      */
     public GameServer() {
-        uuids = new ArrayList<>();
         world = new World();
         connectedClients = new ArrayList<>();
     }
@@ -37,8 +35,7 @@ public class GameServer {
         UUID uuid;
         do {
             uuid = UUID.randomUUID();
-        } while(uuids.contains(uuid));
-        uuids.add(uuid);
+        } while(world.get(uuid) != null);
         return uuid;
     }
 
@@ -46,8 +43,8 @@ public class GameServer {
      * Function to remove an <code>UUID</code>
      * @param uuid The <code>UUID</code>
      */
-    public void removeUUID(UUID uuid) {
-        uuids.remove(uuid);
+    public void removeComponent(UUID uuid) {
+        world.remove(uuid);
     }
 
     /**
@@ -88,7 +85,6 @@ public class GameServer {
     public void disconnectClient(UUID uuid) {
         int i = findConnectedClient(uuid);
         if(i != -1) connectedClients.remove(i);
-        removeUUID(uuid);
     }
 
     /**

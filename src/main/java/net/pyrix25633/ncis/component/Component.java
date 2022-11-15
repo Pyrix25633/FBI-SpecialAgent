@@ -31,11 +31,11 @@ public class Component extends JComponent {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        Position calculatedPosition = GUIHelper.calculateWindowPosition(position);
         HitBox calculatedHitBox = GUIHelper.calculateHitBox(hitBox);
+        Position calculatedPosition = GUIHelper.calculateWindowPosition(position, calculatedHitBox);
 
-        g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
-                calculatedHitBox.getWidth(), calculatedHitBox.getWidth(), false);
+        g.fill3DRect((int)calculatedPosition.getX(), (int)calculatedPosition.getY(),
+                (int)calculatedHitBox.getWidth(), (int)calculatedHitBox.getWidth(), false);
     }
 
     /**
@@ -44,12 +44,5 @@ public class Component extends JComponent {
      */
     public UUID getUuid() {
         return uuid;
-    }
-
-    /**
-     * Method to call when a component is destroyed
-     */
-    protected void destroy() {
-        Main.gameServer.removeUUID(uuid);
     }
 }

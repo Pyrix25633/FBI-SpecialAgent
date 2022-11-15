@@ -3,6 +3,7 @@ package net.pyrix25633.ncis.client;
 import net.pyrix25633.ncis.Main;
 import net.pyrix25633.ncis.gui.GUIHelper;
 import net.pyrix25633.ncis.gui.GameWindow;
+import net.pyrix25633.ncis.util.Vector;
 
 public class GameClient {
     private final GameWindow window;
@@ -23,6 +24,14 @@ public class GameClient {
      */
     public ConnectedClient getConnectedClient() {
         return connectedClient;
+    }
+
+    /**
+     * Method to move the <code>ConnectedClient</code>
+     * @param vector The movement <code>Vector</code>
+     */
+    public void move(Vector vector) {
+        connectedClient.getPosition().move(vector);
     }
 
     /**

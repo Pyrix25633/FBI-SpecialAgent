@@ -39,10 +39,19 @@ public class World implements Iterable<Component> {
     }
 
     /**
+     * Method to remove a <code>Component</code>
+     * @param uuid The <code>UUID</code> of the <code>Component</code>
+     */
+    public void remove(UUID uuid) {
+        Component component = get(uuid);
+        if(component != null)
+            world.remove(component);
+    }
+
+    /**
      * Method to make the <code>World</code> class <code>Iterable</code>
      * @return The <code>Iterator</code>
      */
-    @NotNull
     @Override
     public Iterator<Component> iterator() {
         return world.iterator();
