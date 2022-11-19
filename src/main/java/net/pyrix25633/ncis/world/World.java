@@ -1,7 +1,6 @@
 package net.pyrix25633.ncis.world;
 
 import net.pyrix25633.ncis.component.Component;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,7 +32,7 @@ public class World implements Iterable<Component> {
      */
     public Component get(UUID uuid) {
         for(Component c : world) {
-            if(c.getUuid() == uuid) return c;
+            if(c.getUUID() == uuid) return c;
         }
         return null;
     }

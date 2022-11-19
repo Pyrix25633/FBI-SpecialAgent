@@ -7,6 +7,7 @@ import net.pyrix25633.ncis.util.Vector;
 
 public class GameClient {
     private final GameWindow window;
+    private final GUIHelper helper;
     private final ConnectedClient connectedClient;
     public static final String version = "0.1.0";
 
@@ -14,8 +15,9 @@ public class GameClient {
      * Constructor
      */
     public GameClient() {
-        window = new GameWindow();
         connectedClient = Main.gameServer.connectClient();
+        helper = new GUIHelper(connectedClient.getPosition());
+        window = new GameWindow(helper);
     }
 
     /**
@@ -30,8 +32,8 @@ public class GameClient {
      * Method to move the <code>ConnectedClient</code>
      * @param vector The movement <code>Vector</code>
      */
-    public void move(Vector vector) {
-        connectedClient.getPosition().move(vector);
+    public void setMovement(Vector<Float> vector) {
+        connectedClient.setMovement(vector);
     }
 
     /**
@@ -46,7 +48,7 @@ public class GameClient {
      * Method to repaint the <code>GameWindow</code>
      */
     public void repaint() {
-        GUIHelper.calculateScale();
+        helper.calculateScale();
         window.repaint();
     }
 }

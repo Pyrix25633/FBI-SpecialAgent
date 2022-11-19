@@ -1,36 +1,51 @@
 package net.pyrix25633.ncis.client;
 
+import net.pyrix25633.ncis.component.Player;
 import net.pyrix25633.ncis.util.Position;
+import net.pyrix25633.ncis.util.Vector;
 
 import java.util.UUID;
 
 public class ConnectedClient {
-    private final UUID uuid;
-    private final Position position;
+    private final Player player;
 
     /**
      * Constructor
-     * @param uuid The <code>UUID</code>
-     * @param position The <code>Position</code>
+     * @param player The <code>Player</code>
      */
-    public ConnectedClient(UUID uuid, Position position) {
-        this.uuid = uuid;
-        this.position = position;
+    public ConnectedClient(Player player) {
+        this.player = player;
     }
 
     /**
-     * Method to get the <code>UUID</code>
-     * @return The <code>UUID</code>
+     * Method to get the <code>Player</code> <code>UUID</code>
+     * @return The <code>Player</code> <code>UUID</code>
      */
-    public UUID getUuid() {
-        return uuid;
+    public UUID getUUID() {
+        return player.getUUID();
     }
 
     /**
-     * Method to get the <code>Position</code>
-     * @return The <code>Position</code>
+     * Method to get the <code>Player</code> <code>Position</code>
+     * @return The <code>Player</code> <code>Postion</code>
      */
-    public Position getPosition() {
-        return position;
+    public Position<Float> getPosition() {
+        return player.getPosition();
+    }
+
+    /**
+     * Method to get the <code>Player</code>
+     * @return The <code>Player</code>
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Method to set the <code>Player</code> movement <code>Vector</code>
+     * @param movement The movement <code>Vector</code>
+     */
+    public void setMovement(Vector<Float> movement) {
+        player.setMovement(movement);
     }
 }

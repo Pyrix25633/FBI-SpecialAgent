@@ -11,13 +11,15 @@ import java.util.UUID;
 
 public class Component extends JComponent {
     protected final UUID uuid;
-    protected final Position position;
-    protected final HitBox hitBox;
+    protected final Position<Float> position;
+    protected final HitBox<Float> hitBox;
 
     /**
      * Constructor
+     * @param position The <code>Position</code>
+     * @param hitBox The <code>HitBox</code>
      */
-    public Component(Position position, HitBox hitBox) {
+    public Component(Position<Float> position, HitBox<Float> hitBox) {
         uuid = Main.gameServer.generateUUID();
         this.position = position;
         this.hitBox = hitBox;
@@ -25,24 +27,32 @@ public class Component extends JComponent {
 
     /**
      * Method to paint the component
-     * @param g The <code>Graphics</code> object to protect
+     * @param g The <code>Graphics</code>
+     * @param helper The <code>GUIHelper</code>
      */
-    @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g, GUIHelper helper) {
         super.paintComponent(g);
 
-        HitBox calculatedHitBox = GUIHelper.calculateHitBox(hitBox);
-        Position calculatedPosition = GUIHelper.calculateWindowPosition(position, calculatedHitBox);
+        HitBox<Integer> calculatedHitBox = helper.calculateHitBox(hitBox);
+        Position<Integer> calculatedPosition = helper.calculateWorldWindowPosition(position, calculatedHitBox);
 
-        g.fill3DRect((int)calculatedPosition.getX(), (int)calculatedPosition.getY(),
-                (int)calculatedHitBox.getWidth(), (int)calculatedHitBox.getWidth(), false);
+        g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
+                calculatedHitBox.getWidth(), calculatedHitBox.getWidth(), false);
     }
 
     /**
      * Method to get the UUID
      * @return The <code>UUID</code>
      */
-    public UUID getUuid() {
+    public UUID getUUID() {
         return uuid;
+    }
+
+    /**
+     * Method to get the <code>Position</code>
+     * @return The <code>Position</code>
+     */
+    public Position<Float> getPosition() {
+        return position;
     }
 }

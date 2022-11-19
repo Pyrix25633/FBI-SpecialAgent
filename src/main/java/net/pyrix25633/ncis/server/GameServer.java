@@ -1,6 +1,10 @@
 package net.pyrix25633.ncis.server;
 
 import net.pyrix25633.ncis.client.ConnectedClient;
+import net.pyrix25633.ncis.component.Component;
+import net.pyrix25633.ncis.component.MovableComponent;
+import net.pyrix25633.ncis.component.Player;
+import net.pyrix25633.ncis.util.HitBox;
 import net.pyrix25633.ncis.util.Position;
 import net.pyrix25633.ncis.world.World;
 
@@ -52,7 +56,7 @@ public class GameServer {
      * @return The <code>ConnectedClient</code>
      */
     public ConnectedClient connectClient() {
-        ConnectedClient connectedClient = new ConnectedClient(generateUUID(), new Position(0, 0));
+        ConnectedClient connectedClient = new ConnectedClient(new Player(new Position<>(0F, 0F), new HitBox<>(1F, 1F)));
         connectedClients.add(connectedClient);
         return connectedClient;
     }
@@ -62,7 +66,7 @@ public class GameServer {
      * @param uuid The <code>UUID</code>
      * @return The <code>Position</code>
      */
-    public Position getConnectedClientPosition(UUID uuid) {
+    public Position<Float> getConnectedClientPosition(UUID uuid) {
         int i = findConnectedClient(uuid);
         if(i != -1) return connectedClients.get(i).getPosition();
         return null;
@@ -74,7 +78,7 @@ public class GameServer {
      *                        <code>UUID</code> and the <code>Position</code>
      */
     public void setConnectedClientPosition(ConnectedClient connectedClient) {
-        int i = findConnectedClient(connectedClient.getUuid());
+        int i = findConnectedClient(connectedClient.getUUID());
         if(i != -1) connectedClients.get(i).getPosition().set(connectedClient.getPosition());
     }
 
@@ -88,13 +92,21 @@ public class GameServer {
     }
 
     /**
+     * Method to process the movements in the <code>World</code>
+     */
+    public void processMovements() {
+        for(Component c : world)
+            if(c instanceof MovableComponent) ((MovableComponent)c).move();
+    }
+
+    /**
      * Method to find a <code>ConnectedClient</code>
      * @param uuid The <code>UUID</code>
      * @return The <code>int</code> index, -1 if not found
      */
     private int findConnectedClient(UUID uuid) {
         for(int i = 0; i < connectedClients.size(); i++) {
-            if(connectedClients.get(i).getUuid() == uuid) return i;
+            if(connectedClients.get(i).getUUID() == uuid) return i;
         }
         return -1;
     }

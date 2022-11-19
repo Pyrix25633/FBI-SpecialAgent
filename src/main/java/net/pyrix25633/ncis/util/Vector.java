@@ -1,56 +1,56 @@
 package net.pyrix25633.ncis.util;
 
-public class Vector {
-    private float width, height;
+public class Vector <T extends Number> {
+    private T width, height;
 
     /**
      * Constructor
-     * @param width The <code>float</code> width
-     * @param height The <code>float</code> height
+     * @param width The <code>T</code> width
+     * @param height The <code>T</code> height
      */
-    public Vector(float width, float height) {
+    public Vector(T width, T height) {
         set(width, height);
     }
 
     /**
      * Method to set the width
-     * @param width The <code>float</code> width
+     * @param width The <code>T</code> width
      */
-    public void setWidth(float width) {
+    public void setWidth(T width) {
         this.width = width;
     }
 
     /**
      * Method to set the height
-     * @param height The <code>float</code> height
+     * @param height The <code>T</code> height
      */
-    public void setHeight(float height) {
+    public void setHeight(T height) {
         this.height = height;
     }
 
     /**
      * Method to set both width and height
-     * @param width The <code>float</code> width
-     * @param height The <code>float</code> height
+     * @param width The <code>T</code> width
+     * @param height The <code>T</code> height
      */
-    public void set(float width, float height) {
+    public void set(T width, T height) {
         this.width = width;
         this.height = height;
     }
 
     /**
      * Method to get the width
-     * @return The <code>float</code> width
+     * @return The <code>T</code> width
      */
-    public float getWidth() {
+    public T getWidth() {
         return width;
     }
 
     /**
      * Method to get the height
-     * @return The <code>float</code> height
+     * @return The <code>T</code> height
      */
-    public float getHeight() {
+    public T getHeight() {
         return height;
     }
 }
