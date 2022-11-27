@@ -1,6 +1,6 @@
-package net.pyrix25633.ncis.world;
+package net.pyrix25633.special_agent.world;
 
-import net.pyrix25633.ncis.component.Component;
+import net.pyrix25633.special_agent.component.Component;
 
 import java.util.ArrayList;
 import java.util.Iterator;

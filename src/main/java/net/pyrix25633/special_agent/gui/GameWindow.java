@@ -1,6 +1,6 @@
-package net.pyrix25633.ncis.gui;
+package net.pyrix25633.special_agent.gui;
 
-import net.pyrix25633.ncis.client.GameClient;
+import net.pyrix25633.special_agent.client.GameClient;
 
 import javax.swing.*;
 import java.awt.*;

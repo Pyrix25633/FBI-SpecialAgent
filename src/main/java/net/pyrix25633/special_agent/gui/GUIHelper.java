@@ -1,18 +1,18 @@
-package net.pyrix25633.ncis.gui;
+package net.pyrix25633.special_agent.gui;
 
-import net.pyrix25633.ncis.Main;
-import net.pyrix25633.ncis.util.HitBox;
-import net.pyrix25633.ncis.util.Position;
+import net.pyrix25633.special_agent.Main;
+import net.pyrix25633.special_agent.util.HitBox;
+import net.pyrix25633.special_agent.util.Position;
 
 public class GUIHelper {
-    private int scale = 1;
-    private final Position<Float> clientPosition;
+    private int width = 0, height = 0, scale = 1;
+    private final Position.Float clientPosition;
 
     /**
      * Constructor
      * @param clientPosition The <code>ConnectedClient</code> <code>Player</code> <code>Position</code>
      */
-    public GUIHelper(Position<Float> clientPosition) {
+    public GUIHelper(Position.Float clientPosition) {
         this.clientPosition = clientPosition;
     }
 
@@ -22,12 +22,12 @@ public class GUIHelper {
      * @param calculatedHitBox The previously calculated <code>HitBox</code>
      * @return The <code>Position</code> on the <code>GameWindow</code>
      */
-    public Position<Integer> calculateWorldWindowPosition(Position<Float> position, HitBox<Integer> calculatedHitBox) {
-        Position<Float> scaledClientPosition = new Position<>(clientPosition.getX() * scale,
+    public Position.Integer calculateWorldWindowPosition(Position.Float position, HitBox.Integer calculatedHitBox) {
+        Position.Float scaledClientPosition = new Position.Float(clientPosition.getX() * scale,
                 clientPosition.getY() * scale);
-        Position<Float> scaledPosition = new Position<>(position.getX() * scale, position.getY() * scale);
+        Position.Float scaledPosition = new Position.Float(position.getX() * scale, position.getY() * scale);
         GameWindow window = Main.gameClient.getWindow();
-        return new Position<>(Math.round(scaledPosition.getX() -
+        return new Position.Integer(Math.round(scaledPosition.getX() -
                 (scaledClientPosition.getX() - ((window.getWidth() - (float)calculatedHitBox.getWidth()) / 2))),
             Math.round(window.getHeight() -
                 (scaledPosition.getY() - (scaledClientPosition.getY() - (float)(window.getHeight() / 2) -
@@ -39,8 +39,8 @@ public class GUIHelper {
      * @param hitBox The <code>Component</code> <code>HitBox</code>
      * @return The scaled <code>HitBox</code>
      */
-    public HitBox<Integer> calculateHitBox(HitBox<Float> hitBox) {
-        return new HitBox<>(Math.round(hitBox.getWidth() * scale), Math.round(hitBox.getHeight() * scale));
+    public HitBox.Integer calculateHitBox(HitBox.Float hitBox) {
+        return new HitBox.Integer(Math.round(hitBox.getWidth() * scale), Math.round(hitBox.getHeight() * scale));
     }
 
     /**
@@ -48,6 +48,8 @@ public class GUIHelper {
      */
     public void calculateScale() {
         GameWindow window = Main.gameClient.getWindow();
-        scale = Math.max(window.getWidth() / 32, window.getHeight() / 18);
+        width = window.getWidth();
+        height = window.getHeight();
+        scale = Math.max(width / 32, height / 18);
     }
 }

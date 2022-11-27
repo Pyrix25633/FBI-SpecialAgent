@@ -1,9 +1,9 @@
-package net.pyrix25633.ncis.client;
+package net.pyrix25633.special_agent.client;
 
-import net.pyrix25633.ncis.Main;
-import net.pyrix25633.ncis.gui.GUIHelper;
-import net.pyrix25633.ncis.gui.GameWindow;
-import net.pyrix25633.ncis.util.Vector;
+import net.pyrix25633.special_agent.Main;
+import net.pyrix25633.special_agent.gui.GUIHelper;
+import net.pyrix25633.special_agent.gui.GameWindow;
+import net.pyrix25633.special_agent.util.Vector;
 
 public class GameClient {
     private final GameWindow window;
@@ -32,7 +32,7 @@ public class GameClient {
      * Method to move the <code>ConnectedClient</code>
      * @param vector The movement <code>Vector</code>
      */
-    public void setMovement(Vector<Float> vector) {
+    public void setMovement(Vector.Float vector) {
         connectedClient.setMovement(vector);
     }
 

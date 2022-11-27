@@ -1,27 +1,27 @@
-package net.pyrix25633.ncis.component;
+package net.pyrix25633.special_agent.component;
 
-import net.pyrix25633.ncis.util.HitBox;
-import net.pyrix25633.ncis.util.Position;
-import net.pyrix25633.ncis.util.Vector;
+import net.pyrix25633.special_agent.util.HitBox;
+import net.pyrix25633.special_agent.util.Position;
+import net.pyrix25633.special_agent.util.Vector;
 
 public class MovableComponent extends Component {
-    protected Vector<Float> movement;
+    protected Vector.Float movement;
 
     /**
      * Constructor
      * @param position The <code>Position</code>
      * @param hitBox The <code>HitBox</code>
      */
-    public MovableComponent(Position<Float> position, HitBox<Float> hitBox) {
+    public MovableComponent(Position.Float position, HitBox.Float hitBox) {
         super(position, hitBox);
-        movement = new Vector<>(0F, 0F);
+        movement = new Vector.Float(0F, 0F);
     }
 
     /**
      * Method to set the movement <code>Vector</code>
      * @param movement The movement <code>Vector</code>
      */
-    public void setMovement(Vector<Float> movement) {
+    public void setMovement(Vector.Float movement) {
         this.movement = movement;
     }
 

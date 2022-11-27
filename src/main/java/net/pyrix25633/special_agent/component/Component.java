@@ -1,9 +1,9 @@
-package net.pyrix25633.ncis.component;
+package net.pyrix25633.special_agent.component;
 
-import net.pyrix25633.ncis.Main;
-import net.pyrix25633.ncis.gui.GUIHelper;
-import net.pyrix25633.ncis.util.HitBox;
-import net.pyrix25633.ncis.util.Position;
+import net.pyrix25633.special_agent.Main;
+import net.pyrix25633.special_agent.gui.GUIHelper;
+import net.pyrix25633.special_agent.util.HitBox;
+import net.pyrix25633.special_agent.util.Position;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,15 +11,15 @@ import java.util.UUID;
 
 public class Component extends JComponent {
     protected final UUID uuid;
-    protected final Position<Float> position;
-    protected final HitBox<Float> hitBox;
+    protected final Position.Float position;
+    protected final HitBox.Float hitBox;
 
     /**
      * Constructor
      * @param position The <code>Position</code>
      * @param hitBox The <code>HitBox</code>
      */
-    public Component(Position<Float> position, HitBox<Float> hitBox) {
+    public Component(Position.Float position, HitBox.Float hitBox) {
         uuid = Main.gameServer.generateUUID();
         this.position = position;
         this.hitBox = hitBox;
@@ -33,8 +33,8 @@ public class Component extends JComponent {
     public void paintComponent(Graphics g, GUIHelper helper) {
         super.paintComponent(g);
 
-        HitBox<Integer> calculatedHitBox = helper.calculateHitBox(hitBox);
-        Position<Integer> calculatedPosition = helper.calculateWorldWindowPosition(position, calculatedHitBox);
+        HitBox.Integer calculatedHitBox = helper.calculateHitBox(hitBox);
+        Position.Integer calculatedPosition = helper.calculateWorldWindowPosition(position, calculatedHitBox);
 
         g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
                 calculatedHitBox.getWidth(), calculatedHitBox.getWidth(), false);
@@ -52,7 +52,7 @@ public class Component extends JComponent {
      * Method to get the <code>Position</code>
      * @return The <code>Position</code>
      */
-    public Position<Float> getPosition() {
+    public Position.Float getPosition() {
         return position;
     }
 }

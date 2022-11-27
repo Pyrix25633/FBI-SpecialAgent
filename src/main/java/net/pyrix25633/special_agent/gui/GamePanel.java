@@ -1,8 +1,8 @@
-package net.pyrix25633.ncis.gui;
+package net.pyrix25633.special_agent.gui;
 
-import net.pyrix25633.ncis.Main;
-import net.pyrix25633.ncis.client.KeyboardListener;
-import net.pyrix25633.ncis.component.Component;
+import net.pyrix25633.special_agent.Main;
+import net.pyrix25633.special_agent.client.KeyboardListener;
+import net.pyrix25633.special_agent.component.Component;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,12 +1,12 @@
-package net.pyrix25633.ncis.server;
+package net.pyrix25633.special_agent.server;
 
-import net.pyrix25633.ncis.client.ConnectedClient;
-import net.pyrix25633.ncis.component.Component;
-import net.pyrix25633.ncis.component.MovableComponent;
-import net.pyrix25633.ncis.component.Player;
-import net.pyrix25633.ncis.util.HitBox;
-import net.pyrix25633.ncis.util.Position;
-import net.pyrix25633.ncis.world.World;
+import net.pyrix25633.special_agent.client.ConnectedClient;
+import net.pyrix25633.special_agent.component.Component;
+import net.pyrix25633.special_agent.component.MovableComponent;
+import net.pyrix25633.special_agent.component.Player;
+import net.pyrix25633.special_agent.util.HitBox;
+import net.pyrix25633.special_agent.util.Position;
+import net.pyrix25633.special_agent.world.World;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -56,7 +56,7 @@ public class GameServer {
      * @return The <code>ConnectedClient</code>
      */
     public ConnectedClient connectClient() {
-        ConnectedClient connectedClient = new ConnectedClient(new Player(new Position<>(0F, 0F), new HitBox<>(1F, 1F)));
+        ConnectedClient connectedClient = new ConnectedClient(new Player(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F)));
         connectedClients.add(connectedClient);
         return connectedClient;
     }
@@ -66,7 +66,7 @@ public class GameServer {
      * @param uuid The <code>UUID</code>
      * @return The <code>Position</code>
      */
-    public Position<Float> getConnectedClientPosition(UUID uuid) {
+    public Position.Float getConnectedClientPosition(UUID uuid) {
         int i = findConnectedClient(uuid);
         if(i != -1) return connectedClients.get(i).getPosition();
         return null;
