@@ -3,17 +3,21 @@ package net.pyrix25633.special_agent.gui;
 import net.pyrix25633.special_agent.Main;
 import net.pyrix25633.special_agent.util.HitBox;
 import net.pyrix25633.special_agent.util.Position;
+import net.pyrix25633.special_agent.util.PositionRelativeTo;
 
 public class GUIHelper {
-    private int width = 0, height = 0, scale = 1;
+    private int width, height, scale;
     private final Position.Float clientPosition;
+    private HitBox.Integer calculatedClientHitBox;
 
     /**
      * Constructor
      * @param clientPosition The <code>ConnectedClient</code> <code>Player</code> <code>Position</code>
      */
     public GUIHelper(Position.Float clientPosition) {
+        width = 0; height = 0; scale = 0;
         this.clientPosition = clientPosition;
+        calculatedClientHitBox = new HitBox.Integer(0, 0);
     }
 
     /**
@@ -27,11 +31,18 @@ public class GUIHelper {
                 clientPosition.getY() * scale);
         Position.Float scaledPosition = new Position.Float(position.getX() * scale, position.getY() * scale);
         GameWindow window = Main.gameClient.getWindow();
+        //TODO: work here
         return new Position.Integer(Math.round(scaledPosition.getX() -
-                (scaledClientPosition.getX() - ((window.getWidth() - (float)calculatedHitBox.getWidth()) / 2))),
+                (scaledClientPosition.getX() - ((window.getWidth() - (float)calculatedClientHitBox.getWidth()) / 2))),
             Math.round(window.getHeight() -
                 (scaledPosition.getY() - (scaledClientPosition.getY() - (float)(window.getHeight() / 2) -
-                calculatedHitBox.getHeight() * 1.5F))));
+                calculatedClientHitBox.getHeight() * 1.5F)) - calculatedHitBox.getHeight()));
+    }
+
+    public Position.Integer calculateWindowRelativePosition(Position.Float position, PositionRelativeTo.X posRelToX,
+                                                            PositionRelativeTo.Y posRelToY) {
+        //TODO: work here
+        return new Position.Integer(0, 0);
     }
 
     /**
@@ -51,5 +62,6 @@ public class GUIHelper {
         width = window.getWidth();
         height = window.getHeight();
         scale = Math.max(width / 32, height / 18);
+        calculatedClientHitBox = calculateHitBox(Main.gameClient.getConnectedClient().getPlayer().getHitBox());
     }
 }

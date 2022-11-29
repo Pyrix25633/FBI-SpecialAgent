@@ -3,12 +3,17 @@ package net.pyrix25633.special_agent.gui;
 import net.pyrix25633.special_agent.Main;
 import net.pyrix25633.special_agent.client.KeyboardListener;
 import net.pyrix25633.special_agent.component.Component;
+import net.pyrix25633.special_agent.component.GUIComponent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class GamePanel extends JPanel {
     private final GUIHelper helper;
+    private final HashMap<UUID, GUIComponent> components;
 
     /**
      * Constructor
@@ -17,7 +22,28 @@ public class GamePanel extends JPanel {
     public GamePanel(GUIHelper helper) {
         super();
         this.helper = helper;
+        components = new HashMap<>();
         addKeyListener(new KeyboardListener());
+    }
+
+    /**
+     * Method to add a <code>GUIComponent</code> to the <code>GamePanel</code>
+     * @param component The <code>GUIComponent</code>
+     */
+    public void add(GUIComponent component) {
+        components.put(component.getUUID(), component);
+    }
+
+    /**
+     * Method to generate an <code>UUID</code>
+     * @return An <code>UUID</code>
+     */
+    public UUID generateUUID() {
+        UUID uuid;
+        do {
+            uuid = UUID.randomUUID();
+        } while(components.get(uuid) != null);
+        return uuid;
     }
 
     /**
@@ -28,8 +54,12 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for(Component c : Main.gameServer.getWorld()) {
-            c.paintComponent(g, helper);
+        for(Map.Entry<UUID, Component> c : Main.gameServer.getWorld()) {
+            c.getValue().paintComponent(g, helper);
+        }
+
+        for(Map.Entry<UUID, GUIComponent> c : components.entrySet()) {
+            c.getValue().paintComponent(g, helper);
         }
     }
 }

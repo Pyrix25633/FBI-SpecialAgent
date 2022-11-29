@@ -9,6 +9,7 @@ import net.pyrix25633.special_agent.util.Position;
 import net.pyrix25633.special_agent.world.World;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.UUID;
 
 public class GameServer {
@@ -95,8 +96,11 @@ public class GameServer {
      * Method to process the movements in the <code>World</code>
      */
     public void processMovements() {
-        for(Component c : world)
+        for(Map.Entry<UUID, Component> e : world) {
+            Component c = e.getValue();
             if(c instanceof MovableComponent) ((MovableComponent)c).move();
+        }
+
     }
 
     /**

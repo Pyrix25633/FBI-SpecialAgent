@@ -2,18 +2,16 @@ package net.pyrix25633.special_agent.world;
 
 import net.pyrix25633.special_agent.component.Component;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.UUID;
+import java.util.*;
 
-public class World implements Iterable<Component> {
-    private final ArrayList<Component> world;
+public class World implements Iterable<Map.Entry<UUID, Component>> {
+    private final HashMap<UUID, Component> world;
 
     /**
      * Constructor
      */
     public World() {
-        world = new ArrayList<>();
+        world = new HashMap<>();
     }
 
     /**
@@ -21,7 +19,7 @@ public class World implements Iterable<Component> {
      * @param c The <code>Component</></code>
      */
     public void add(Component c) {
-        world.add(c);
+        world.put(c.getUUID(), c);
     }
 
     /**
@@ -31,10 +29,7 @@ public class World implements Iterable<Component> {
      * null if it doesn't exist
      */
     public Component get(UUID uuid) {
-        for(Component c : world) {
-            if(c.getUUID() == uuid) return c;
-        }
-        return null;
+        return world.get(uuid);
     }
 
     /**
@@ -44,7 +39,7 @@ public class World implements Iterable<Component> {
     public void remove(UUID uuid) {
         Component component = get(uuid);
         if(component != null)
-            world.remove(component);
+            world.remove(component.getUUID());
     }
 
     /**
@@ -52,7 +47,7 @@ public class World implements Iterable<Component> {
      * @return The <code>Iterator</code>
      */
     @Override
-    public Iterator<Component> iterator() {
-        return world.iterator();
+    public Iterator<Map.Entry<UUID, Component>> iterator() {
+        return world.entrySet().iterator();
     }
 }

@@ -1,9 +1,11 @@
 package net.pyrix25633.special_agent.gui;
 
 import net.pyrix25633.special_agent.client.GameClient;
+import net.pyrix25633.special_agent.component.GUIComponent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.UUID;
 
 public class GameWindow extends JFrame {
     private final GamePanel panel;
@@ -25,5 +27,21 @@ public class GameWindow extends JFrame {
 
         this.setVisible(true);
         panel.requestFocus();
+    }
+
+    /**
+     * Method to add a <code>GUIComponent</code> to the <code>GameWindow</code>'s <code>GamePanel</code>
+     * @param component The <code>GUIComponent</code>
+     */
+    public void add(GUIComponent component) {
+        panel.add(component);
+    }
+
+    /**
+     * Method to generate an <code>UUID</code>
+     * @return An <code>UUID</code>
+     */
+    public UUID generateUUID() {
+        return panel.generateUUID();
     }
 }
