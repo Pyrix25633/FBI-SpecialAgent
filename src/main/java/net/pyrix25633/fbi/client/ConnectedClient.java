@@ -1,8 +1,8 @@
-package net.pyrix25633.special_agent.client;
+package net.pyrix25633.fbi.client;
 
-import net.pyrix25633.special_agent.component.Player;
-import net.pyrix25633.special_agent.util.Position;
-import net.pyrix25633.special_agent.util.Vector;
+import net.pyrix25633.fbi.component.Player;
+import net.pyrix25633.fbi.util.Position;
+import net.pyrix25633.fbi.util.Vector;
 
 import java.util.UUID;
 

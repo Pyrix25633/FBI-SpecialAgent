@@ -1,7 +1,7 @@
-package net.pyrix25633.special_agent.component;
+package net.pyrix25633.fbi.component;
 
-import net.pyrix25633.special_agent.util.HitBox;
-import net.pyrix25633.special_agent.util.Position;
+import net.pyrix25633.fbi.util.HitBox;
+import net.pyrix25633.fbi.util.Position;
 
 public class CharComponent extends Component {
     //TODO: Work on CharComponent

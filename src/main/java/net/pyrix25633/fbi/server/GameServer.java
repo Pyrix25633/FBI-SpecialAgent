@@ -1,12 +1,12 @@
-package net.pyrix25633.special_agent.server;
+package net.pyrix25633.fbi.server;
 
-import net.pyrix25633.special_agent.client.ConnectedClient;
-import net.pyrix25633.special_agent.component.Component;
-import net.pyrix25633.special_agent.component.MovableComponent;
-import net.pyrix25633.special_agent.component.Player;
-import net.pyrix25633.special_agent.util.HitBox;
-import net.pyrix25633.special_agent.util.Position;
-import net.pyrix25633.special_agent.world.World;
+import net.pyrix25633.fbi.client.ConnectedClient;
+import net.pyrix25633.fbi.component.Component;
+import net.pyrix25633.fbi.component.MovableComponent;
+import net.pyrix25633.fbi.component.Player;
+import net.pyrix25633.fbi.util.HitBox;
+import net.pyrix25633.fbi.util.Position;
+import net.pyrix25633.fbi.world.World;
 
 import java.util.ArrayList;
 import java.util.Map;

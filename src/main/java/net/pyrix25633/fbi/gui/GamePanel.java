@@ -1,9 +1,9 @@
-package net.pyrix25633.special_agent.gui;
+package net.pyrix25633.fbi.gui;
 
-import net.pyrix25633.special_agent.Main;
-import net.pyrix25633.special_agent.client.KeyboardListener;
-import net.pyrix25633.special_agent.component.Component;
-import net.pyrix25633.special_agent.component.GUIComponent;
+import net.pyrix25633.fbi.Main;
+import net.pyrix25633.fbi.client.KeyboardListener;
+import net.pyrix25633.fbi.component.Component;
+import net.pyrix25633.fbi.component.GUIComponent;
 
 import javax.swing.*;
 import java.awt.*;

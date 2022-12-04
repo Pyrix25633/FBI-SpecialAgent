@@ -1,4 +1,4 @@
-package net.pyrix25633.special_agent.util;
+package net.pyrix25633.fbi.util;
 
 public class Position {
     public static class Float {

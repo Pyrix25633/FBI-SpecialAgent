@@ -1,4 +1,4 @@
-package net.pyrix25633.special_agent.util;
+package net.pyrix25633.fbi.util;
 
 public class HitBox {
     public static class Float extends Vector.Float {

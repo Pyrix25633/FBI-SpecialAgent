@@ -1,12 +1,12 @@
-package net.pyrix25633.special_agent;
+package net.pyrix25633.fbi;
 
-import net.pyrix25633.special_agent.client.GameClient;
-import net.pyrix25633.special_agent.component.Component;
-import net.pyrix25633.special_agent.component.GUIComponent;
-import net.pyrix25633.special_agent.server.GameServer;
-import net.pyrix25633.special_agent.util.HitBox;
-import net.pyrix25633.special_agent.util.Position;
-import net.pyrix25633.special_agent.util.PositionRelativeTo;
+import net.pyrix25633.fbi.client.GameClient;
+import net.pyrix25633.fbi.component.Component;
+import net.pyrix25633.fbi.component.GUIComponent;
+import net.pyrix25633.fbi.server.GameServer;
+import net.pyrix25633.fbi.util.HitBox;
+import net.pyrix25633.fbi.util.Position;
+import net.pyrix25633.fbi.util.PositionRelativeTo;
 
 import java.util.UUID;
 

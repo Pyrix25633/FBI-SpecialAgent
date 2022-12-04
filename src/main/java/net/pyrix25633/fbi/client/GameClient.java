@@ -1,9 +1,9 @@
-package net.pyrix25633.special_agent.client;
+package net.pyrix25633.fbi.client;
 
-import net.pyrix25633.special_agent.Main;
-import net.pyrix25633.special_agent.gui.GUIHelper;
-import net.pyrix25633.special_agent.gui.GameWindow;
-import net.pyrix25633.special_agent.util.Vector;
+import net.pyrix25633.fbi.Main;
+import net.pyrix25633.fbi.gui.GUIHelper;
+import net.pyrix25633.fbi.gui.GameWindow;
+import net.pyrix25633.fbi.util.Vector;
 
 public class GameClient {
     private final GameWindow window;

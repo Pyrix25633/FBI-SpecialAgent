@@ -1,10 +1,10 @@
-package net.pyrix25633.special_agent.gui;
+package net.pyrix25633.fbi.gui;
 
-import net.pyrix25633.special_agent.client.GameClient;
-import net.pyrix25633.special_agent.component.GUIComponent;
+import net.pyrix25633.fbi.client.GameClient;
+import net.pyrix25633.fbi.component.GUIComponent;
+import net.pyrix25633.fbi.util.HitBox;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.UUID;
 
@@ -18,16 +18,20 @@ public class GameWindow extends JFrame {
     public GameWindow(GUIHelper helper) {
         super();
         this.setSize(600, 400);
-        this.setTitle("Naval Criminal Investigative Service: The Game " + GameClient.version);
+        this.setTitle("FBI: Special Agent " + GameClient.version);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setMinimumSize(new Dimension(576, 324));
-        
+
         panel = new GamePanel(helper);
         this.add(panel);
 
         this.setVisible(true);
         panel.requestFocus();
+    }
+
+    public HitBox.Integer getDimension() {
+        return new HitBox.Integer(panel.getWidth(), panel.getHeight());
     }
 
     /**

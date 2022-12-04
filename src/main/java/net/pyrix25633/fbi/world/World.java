@@ -1,6 +1,6 @@
-package net.pyrix25633.special_agent.world;
+package net.pyrix25633.fbi.world;
 
-import net.pyrix25633.special_agent.component.Component;
+import net.pyrix25633.fbi.component.Component;
 
 import java.util.*;
 
