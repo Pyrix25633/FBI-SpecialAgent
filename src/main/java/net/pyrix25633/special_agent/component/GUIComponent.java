@@ -32,9 +32,9 @@ public class GUIComponent extends Component {
         super.paintComponent(g);
 
         HitBox.Integer calculatedHitBox = helper.calculateHitBox(hitBox);
-        Position.Integer calculatedPosition = helper.calculateWorldWindowPosition(position, calculatedHitBox);
+        Position.Integer calculatedPosition = helper.calculateWindowRelativePosition(position, calculatedHitBox, posRelToX, posRelToY);
 
         g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
-                calculatedHitBox.getWidth(), calculatedHitBox.getWidth(), false);
+                calculatedHitBox.getWidth(), calculatedHitBox.getHeight(), false);
     }
 }

@@ -37,7 +37,7 @@ public class Component extends JComponent {
         Position.Integer calculatedPosition = helper.calculateWorldWindowPosition(position, calculatedHitBox);
 
         g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
-                calculatedHitBox.getWidth(), calculatedHitBox.getWidth(), false);
+                calculatedHitBox.getWidth(), calculatedHitBox.getHeight(), false);
     }
 
     /**

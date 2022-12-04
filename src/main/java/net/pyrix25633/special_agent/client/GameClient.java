@@ -1,13 +1,9 @@
 package net.pyrix25633.special_agent.client;
 
 import net.pyrix25633.special_agent.Main;
-import net.pyrix25633.special_agent.component.Component;
-import net.pyrix25633.special_agent.component.GUIComponent;
 import net.pyrix25633.special_agent.gui.GUIHelper;
 import net.pyrix25633.special_agent.gui.GameWindow;
 import net.pyrix25633.special_agent.util.Vector;
-
-import java.util.UUID;
 
 public class GameClient {
     private final GameWindow window;

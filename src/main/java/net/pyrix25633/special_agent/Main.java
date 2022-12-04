@@ -6,6 +6,7 @@ import net.pyrix25633.special_agent.component.GUIComponent;
 import net.pyrix25633.special_agent.server.GameServer;
 import net.pyrix25633.special_agent.util.HitBox;
 import net.pyrix25633.special_agent.util.Position;
+import net.pyrix25633.special_agent.util.PositionRelativeTo;
 
 import java.util.UUID;
 
@@ -29,6 +30,17 @@ public class Main {
         gameClient.getConnectedClient().getPosition().set(10F, 20F);
 
         gameServer.setConnectedClientPosition(gameClient.getConnectedClient());
+
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.LEFT, PositionRelativeTo.Y.TOP));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.CENTER, PositionRelativeTo.Y.TOP));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.RIGHT, PositionRelativeTo.Y.TOP));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.LEFT, PositionRelativeTo.Y.CENTER));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.CENTER, PositionRelativeTo.Y.CENTER));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.RIGHT, PositionRelativeTo.Y.CENTER));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.LEFT, PositionRelativeTo.Y.BOTTOM));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.CENTER, PositionRelativeTo.Y.BOTTOM));
+        gameClient.getWindow().add(new GUIComponent(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F), PositionRelativeTo.X.RIGHT, PositionRelativeTo.Y.BOTTOM));
+
 
         while(true) {
             gameServer.processMovements();

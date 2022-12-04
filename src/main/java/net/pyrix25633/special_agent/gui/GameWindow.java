@@ -4,6 +4,7 @@ import net.pyrix25633.special_agent.client.GameClient;
 import net.pyrix25633.special_agent.component.GUIComponent;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.UUID;
 
@@ -21,7 +22,7 @@ public class GameWindow extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setMinimumSize(new Dimension(576, 324));
-
+        
         panel = new GamePanel(helper);
         this.add(panel);
 
