@@ -2,6 +2,7 @@ package net.pyrix25633.fbi.server;
 
 import net.pyrix25633.fbi.client.ConnectedClient;
 import net.pyrix25633.fbi.component.Component;
+import net.pyrix25633.fbi.component.Movable;
 import net.pyrix25633.fbi.component.MovableComponent;
 import net.pyrix25633.fbi.component.Player;
 import net.pyrix25633.fbi.util.HitBox;
@@ -98,7 +99,7 @@ public class GameServer {
     public void processMovements() {
         for(Map.Entry<UUID, Component> e : world) {
             Component c = e.getValue();
-            if(c instanceof MovableComponent) ((MovableComponent)c).move();
+            if(c instanceof Movable) ((Movable)c).move();
         }
 
     }

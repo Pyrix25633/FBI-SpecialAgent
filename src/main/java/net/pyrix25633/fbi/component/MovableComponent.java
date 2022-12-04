@@ -4,7 +4,7 @@ import net.pyrix25633.fbi.util.HitBox;
 import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.util.Vector;
 
-public class MovableComponent extends Component {
+public class MovableComponent extends Component implements Movable {
     protected Vector.Float movement;
 
     /**
@@ -21,6 +21,7 @@ public class MovableComponent extends Component {
      * Method to set the movement <code>Vector</code>
      * @param movement The movement <code>Vector</code>
      */
+    @Override
     public void setMovement(Vector.Float movement) {
         this.movement = movement;
     }
@@ -28,6 +29,7 @@ public class MovableComponent extends Component {
     /**
      * Method to move the <code>MovableComponent</code> by its movement <code>Vector</code>
      */
+    @Override
     public void move() {
         position.move(movement);
     }
