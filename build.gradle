@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'application'
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -25,6 +26,12 @@ test {
 }
 
 jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.runtimeClasspath.files.collect { it.getName() }.join(' '),
+                'Main-Class': 'net.pyrix25633.special_agent.Main'
+        )
+    }
     from("LICENSE") {
         rename { "${it}_${archivesBaseName}" }
     }

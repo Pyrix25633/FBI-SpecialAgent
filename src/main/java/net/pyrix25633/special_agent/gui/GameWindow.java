@@ -24,9 +24,19 @@ public class GameWindow extends JFrame {
 
         panel = new GamePanel(helper);
         this.add(panel);
-
+        //setUndecorated(true);
         this.setVisible(true);
         panel.requestFocus();
+    }
+
+    @Override
+    public int getWidth() {
+        return panel.getWidth();
+    }
+
+    @Override
+    public int getHeight() {
+        return panel.getHeight();
     }
 
     /**
