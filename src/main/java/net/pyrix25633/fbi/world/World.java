@@ -43,6 +43,13 @@ public class World implements Iterable<Map.Entry<UUID, Component>> {
     }
 
     /**
+     * Method to empty the <code>World</code>
+     */
+    public void empty() {
+        world.clear();
+    }
+
+    /**
      * Method to make the <code>World</code> class <code>Iterable</code>
      * @return The <code>Iterator</code>
      */

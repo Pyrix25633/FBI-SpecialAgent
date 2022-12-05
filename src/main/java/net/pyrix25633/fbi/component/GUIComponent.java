@@ -6,18 +6,22 @@ import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.util.PositionRelativeTo;
 
 import java.awt.*;
+import java.util.UUID;
 
 public class GUIComponent extends Component {
     protected final PositionRelativeTo.X posRelToX;
     protected final PositionRelativeTo.Y posRelToY;
     /**
      * Constructor
+     * @param uuid The <code>UUID</code>
      * @param position The <code>Position</code>
      * @param hitBox The <code>HitBox</code>
+     * @param posRelToX The <code>PositionRelativeTo.X</code>
+     * @param posRelToY The <code>PositionRelativeTo.Y</code>
      */
-    public GUIComponent(Position.Float position, HitBox.Float hitBox,
-                        PositionRelativeTo.X posRelToX, PositionRelativeTo.Y posRelToY) {
-        super(position, hitBox);
+    public GUIComponent(UUID uuid, Position.Float position, HitBox.Float hitBox,
+                          PositionRelativeTo.X posRelToX, PositionRelativeTo.Y posRelToY) {
+        super(uuid, position, hitBox);
         this.posRelToX = posRelToX;
         this.posRelToY = posRelToY;
     }

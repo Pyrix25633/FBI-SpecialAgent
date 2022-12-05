@@ -1,6 +1,7 @@
 package net.pyrix25633.fbi.gui;
 
 import net.pyrix25633.fbi.client.GameClient;
+import net.pyrix25633.fbi.component.Component;
 import net.pyrix25633.fbi.component.GUIComponent;
 import net.pyrix25633.fbi.util.HitBox;
 
@@ -40,6 +41,31 @@ public class GameWindow extends JFrame {
      */
     public void add(GUIComponent component) {
         panel.add(component);
+    }
+
+    /**
+     * Method to get a component with a certain <code>UUID</code>
+     * @param uuid The <code>UUID</code>
+     * @return The <code>GUIComponent</code> with that <code>UUID</code>,
+     * null if it doesn't exist
+     */
+    public GUIComponent get(UUID uuid) {
+        return panel.get(uuid);
+    }
+
+    /**
+     * Method to remove a <code>GUIComponent</code>
+     * @param uuid The <code>UUID</code> of the <code>GUIComponent</code>
+     */
+    public void remove(UUID uuid) {
+        panel.remove(uuid);
+    }
+
+    /**
+     * Method to empty the <code>GamePanel</code>
+     */
+    public void empty() {
+        panel.empty();
     }
 
     /**

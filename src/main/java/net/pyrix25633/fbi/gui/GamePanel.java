@@ -35,6 +35,33 @@ public class GamePanel extends JPanel {
     }
 
     /**
+     * Method to get a component with a certain <code>UUID</code>
+     * @param uuid The <code>UUID</code>
+     * @return The <code>GUIComponent</code> with that <code>UUID</code>,
+     * null if it doesn't exist
+     */
+    public GUIComponent get(UUID uuid) {
+        return components.get(uuid);
+    }
+
+    /**
+     * Method to remove a <code>GUIComponent</code>
+     * @param uuid The <code>UUID</code> of the <code>GUIComponent</code>
+     */
+    public void remove(UUID uuid) {
+        Component component = get(uuid);
+        if(component != null)
+            components.remove(component.getUUID());
+    }
+
+    /**
+     * Method to empty the <code>GamePanel</code>
+     */
+    public void empty() {
+        components.clear();
+    }
+
+    /**
      * Method to generate an <code>UUID</code>
      * @return An <code>UUID</code>
      */

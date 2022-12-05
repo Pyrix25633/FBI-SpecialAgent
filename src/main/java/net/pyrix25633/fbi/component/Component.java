@@ -16,11 +16,12 @@ public class Component extends JComponent {
 
     /**
      * Constructor
+     * @param uuid The <code>UUID</code>
      * @param position The <code>Position</code>
      * @param hitBox The <code>HitBox</code>
      */
-    public Component(Position.Float position, HitBox.Float hitBox) {
-        uuid = Main.generateUUID(this);
+    public Component(UUID uuid, Position.Float position, HitBox.Float hitBox) {
+        this.uuid = (uuid != null) ? uuid : Main.generateUUID(this);
         this.position = position;
         this.hitBox = hitBox;
     }

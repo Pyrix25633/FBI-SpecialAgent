@@ -46,19 +46,11 @@ public class GameServer {
     }
 
     /**
-     * Function to remove an <code>UUID</code>
-     * @param uuid The <code>UUID</code>
-     */
-    public void removeComponent(UUID uuid) {
-        world.remove(uuid);
-    }
-
-    /**
      * Method to connect a <code>ConnectedClient</code>
      * @return The <code>ConnectedClient</code>
      */
     public ConnectedClient connectClient() {
-        ConnectedClient connectedClient = new ConnectedClient(new Player(new Position.Float(0F, 0F), new HitBox.Float(1F, 1F)));
+        ConnectedClient connectedClient = new ConnectedClient(new Player(null, new Position.Float(0F, 0F), new HitBox.Float(1F, 1F)));
         connectedClients.add(connectedClient);
         return connectedClient;
     }
@@ -101,7 +93,6 @@ public class GameServer {
             Component c = e.getValue();
             if(c instanceof Movable) ((Movable)c).move();
         }
-
     }
 
     /**

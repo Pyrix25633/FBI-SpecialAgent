@@ -4,16 +4,19 @@ import net.pyrix25633.fbi.util.HitBox;
 import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.util.Vector;
 
+import java.util.UUID;
+
 public class MovableComponent extends Component implements Movable {
     protected Vector.Float movement;
 
     /**
      * Constructor
+     * @param uuid The <code>UUID</code>
      * @param position The <code>Position</code>
      * @param hitBox The <code>HitBox</code>
      */
-    public MovableComponent(Position.Float position, HitBox.Float hitBox) {
-        super(position, hitBox);
+    public MovableComponent(UUID uuid, Position.Float position, HitBox.Float hitBox) {
+        super(uuid, position, hitBox);
         movement = new Vector.Float(0F, 0F);
     }
 
