@@ -6,24 +6,18 @@ import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.util.PositionRelativeTo;
 
 import java.awt.*;
-import java.util.UUID;
 
 public class GUIComponent extends Component {
-    protected final PositionRelativeTo.X posRelToX;
-    protected final PositionRelativeTo.Y posRelToY;
+    protected final PositionRelativeTo positionRelativeTo;
     /**
      * Constructor
-     * @param uuid The <code>UUID</code>
-     * @param position The <code>Position</code>
-     * @param hitBox The <code>HitBox</code>
-     * @param posRelToX The <code>PositionRelativeTo.X</code>
-     * @param posRelToY The <code>PositionRelativeTo.Y</code>
+     * @param position The <code>Position.Float</code>
+     * @param hitBox The <code>HitBox.Float</code>
+     * @param positionRelativeTo The <code>PositionRelativeTo</code>
      */
-    public GUIComponent(UUID uuid, Position.Float position, HitBox.Float hitBox,
-                          PositionRelativeTo.X posRelToX, PositionRelativeTo.Y posRelToY) {
-        super(uuid, position, hitBox);
-        this.posRelToX = posRelToX;
-        this.posRelToY = posRelToY;
+    public GUIComponent(Position.Float position, HitBox.Float hitBox, PositionRelativeTo positionRelativeTo) {
+        super(position, hitBox);
+        this.positionRelativeTo = positionRelativeTo;
     }
 
     /**
@@ -36,7 +30,7 @@ public class GUIComponent extends Component {
         super.paintComponent(g);
 
         HitBox.Integer calculatedHitBox = helper.calculateHitBox(hitBox);
-        Position.Integer calculatedPosition = helper.calculateWindowRelativePosition(position, calculatedHitBox, posRelToX, posRelToY);
+        Position.Integer calculatedPosition = helper.calculateWindowRelativePosition(position, calculatedHitBox, positionRelativeTo);
 
         g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
                 calculatedHitBox.getWidth(), calculatedHitBox.getHeight(), false);

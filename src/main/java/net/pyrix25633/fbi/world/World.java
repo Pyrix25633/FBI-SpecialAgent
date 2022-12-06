@@ -1,11 +1,11 @@
 package net.pyrix25633.fbi.world;
 
-import net.pyrix25633.fbi.component.Component;
+import net.pyrix25633.fbi.component.IdentifiableComponent;
 
 import java.util.*;
 
-public class World implements Iterable<Map.Entry<UUID, Component>> {
-    private final HashMap<UUID, Component> world;
+public class World implements Iterable<Map.Entry<UUID, IdentifiableComponent>> {
+    private final HashMap<UUID, IdentifiableComponent> world;
 
     /**
      * Constructor
@@ -15,29 +15,29 @@ public class World implements Iterable<Map.Entry<UUID, Component>> {
     }
 
     /**
-     * Method to add a <code>Component</code> to the <code>World</code>
-     * @param c The <code>Component</></code>
+     * Method to add a <code>IdentifiableComponent</code> to the <code>World</code>
+     * @param c The <code>IdentifiableComponent</></code>
      */
-    public void add(Component c) {
+    public void add(IdentifiableComponent c) {
         world.put(c.getUUID(), c);
     }
 
     /**
      * Method to get a component with a certain <code>UUID</code>
      * @param uuid The <code>UUID</code>
-     * @return The <code>Component</code> with that <code>UUID</code>,
+     * @return The <code>IdentifiableComponent</code> with that <code>UUID</code>,
      * null if it doesn't exist
      */
-    public Component get(UUID uuid) {
+    public IdentifiableComponent get(UUID uuid) {
         return world.get(uuid);
     }
 
     /**
-     * Method to remove a <code>Component</code>
-     * @param uuid The <code>UUID</code> of the <code>Component</code>
+     * Method to remove an <code>IdentifiableComponent</code>
+     * @param uuid The <code>UUID</code> of the <code>IdentifiableComponent</code> to remove
      */
     public void remove(UUID uuid) {
-        Component component = get(uuid);
+        IdentifiableComponent component = get(uuid);
         if(component != null)
             world.remove(component.getUUID());
     }
@@ -54,7 +54,7 @@ public class World implements Iterable<Map.Entry<UUID, Component>> {
      * @return The <code>Iterator</code>
      */
     @Override
-    public Iterator<Map.Entry<UUID, Component>> iterator() {
+    public Iterator<Map.Entry<UUID, IdentifiableComponent>> iterator() {
         return world.entrySet().iterator();
     }
 }

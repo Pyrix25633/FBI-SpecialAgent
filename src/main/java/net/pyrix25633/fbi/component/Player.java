@@ -9,8 +9,8 @@ public class Player extends MovableComponent {
     /**
      * Constructor
      * @param uuid The <code>UUID</code>
-     * @param position The <code>Position</code>
-     * @param hitBox The <code>HitBox</code>
+     * @param position The <code>Position.Float</code>
+     * @param hitBox The <code>HitBox.Float</code>
      */
     public Player(UUID uuid, Position.Float position, HitBox.Float hitBox) {
         super(uuid, position, hitBox);

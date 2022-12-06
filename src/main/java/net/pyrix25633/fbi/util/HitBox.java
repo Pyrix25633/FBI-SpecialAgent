@@ -1,5 +1,8 @@
 package net.pyrix25633.fbi.util;
 
+import net.pyrix25633.fbi.resource.ResourceLoader;
+import org.json.JSONObject;
+
 public class HitBox {
     public static class Float extends Vector.Float {
         /**
@@ -9,6 +12,15 @@ public class HitBox {
          */
         public Float(float width, float height) {
             super(width, height);
+        }
+
+        /**
+         * Method to get an <code>HitBox.Float</code> from a <code>JSONObject</code>
+         * @param object The <code>JSONObject</code>
+         * @return The <code>HitBox.Float</code>
+         */
+        public static Float fromJSON(JSONObject object) {
+            return new Float(object.getFloat(ResourceLoader.WKEY), object.getFloat(ResourceLoader.HKEY));
         }
     }
 

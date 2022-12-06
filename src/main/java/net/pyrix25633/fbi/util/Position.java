@@ -1,5 +1,8 @@
 package net.pyrix25633.fbi.util;
 
+import net.pyrix25633.fbi.resource.ResourceLoader;
+import org.json.JSONObject;
+
 public class Position {
     public static class Float {
         private float x;
@@ -72,6 +75,15 @@ public class Position {
          */
         public float getY() {
             return y;
+        }
+
+        /**
+         * Method to get a <code>Position.Float</code> from a <code>JSONObject</code>
+         * @param object The <code>JSONObject</code>
+         * @return The <code>Position.Float</code>
+         */
+        public static Float fromJSON(JSONObject object) {
+            return new Float(object.getFloat(ResourceLoader.XKEY), object.getFloat(ResourceLoader.YKEY));
         }
     }
 

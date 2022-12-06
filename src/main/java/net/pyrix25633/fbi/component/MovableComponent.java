@@ -6,14 +6,14 @@ import net.pyrix25633.fbi.util.Vector;
 
 import java.util.UUID;
 
-public class MovableComponent extends Component implements Movable {
+public class MovableComponent extends IdentifiableComponent implements Movable {
     protected Vector.Float movement;
 
     /**
      * Constructor
      * @param uuid The <code>UUID</code>
-     * @param position The <code>Position</code>
-     * @param hitBox The <code>HitBox</code>
+     * @param position The <code>Position.Float</code>
+     * @param hitBox The <code>HitBox.Float</code>
      */
     public MovableComponent(UUID uuid, Position.Float position, HitBox.Float hitBox) {
         super(uuid, position, hitBox);
@@ -21,8 +21,8 @@ public class MovableComponent extends Component implements Movable {
     }
 
     /**
-     * Method to set the movement <code>Vector</code>
-     * @param movement The movement <code>Vector</code>
+     * Method to set the movement <code>Vector.Float</code>
+     * @param movement The movement <code>Vector.Float</code>
      */
     @Override
     public void setMovement(Vector.Float movement) {
@@ -30,7 +30,7 @@ public class MovableComponent extends Component implements Movable {
     }
 
     /**
-     * Method to move the <code>MovableComponent</code> by its movement <code>Vector</code>
+     * Method to move the <code>MovableComponent</code> by its movement <code>Vector.Float</code>
      */
     @Override
     public void move() {

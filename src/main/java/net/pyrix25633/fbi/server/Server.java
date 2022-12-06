@@ -1,28 +1,28 @@
 package net.pyrix25633.fbi.server;
 
 import net.pyrix25633.fbi.client.ConnectedClient;
-import net.pyrix25633.fbi.component.Component;
+import net.pyrix25633.fbi.component.IdentifiableComponent;
 import net.pyrix25633.fbi.component.Movable;
-import net.pyrix25633.fbi.component.MovableComponent;
 import net.pyrix25633.fbi.component.Player;
 import net.pyrix25633.fbi.util.HitBox;
 import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.world.World;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class GameServer {
+public class Server {
     private final World world;
-    private final ArrayList<ConnectedClient> connectedClients;
+    private final HashMap<UUID, ConnectedClient> connectedClients;
 
     /**
      * Constructor
      */
-    public GameServer() {
+    public Server() {
         world = new World();
-        connectedClients = new ArrayList<>();
+        connectedClients = new HashMap<>();
     }
 
     /**
@@ -51,29 +51,19 @@ public class GameServer {
      */
     public ConnectedClient connectClient() {
         ConnectedClient connectedClient = new ConnectedClient(new Player(null, new Position.Float(0F, 0F), new HitBox.Float(1F, 1F)));
-        connectedClients.add(connectedClient);
+        connectedClients.put(connectedClient.getUUID(), connectedClient);
         return connectedClient;
     }
 
     /**
-     * Method to get a <code>ConnectedClient</code>
+     * Method to get a <code>ConnectedClient</code>'s <code>Position.Float</code>
      * @param uuid The <code>UUID</code>
-     * @return The <code>Position</code>
+     * @return The <code>Position.Float</code>
      */
     public Position.Float getConnectedClientPosition(UUID uuid) {
-        int i = findConnectedClient(uuid);
-        if(i != -1) return connectedClients.get(i).getPosition();
+        ConnectedClient c = connectedClients.get(uuid);
+        if(c != null) return c.getPosition();
         return null;
-    }
-
-    /**
-     * Method to set a <code>ConnectedClient</code> <code>Position</code>
-     * @param connectedClient The <code>ConnectedClient</code>, that contains both the
-     *                        <code>UUID</code> and the <code>Position</code>
-     */
-    public void setConnectedClientPosition(ConnectedClient connectedClient) {
-        int i = findConnectedClient(connectedClient.getUUID());
-        if(i != -1) connectedClients.get(i).getPosition().set(connectedClient.getPosition());
     }
 
     /**
@@ -81,29 +71,17 @@ public class GameServer {
      * @param uuid The <code>UUID</code>
      */
     public void disconnectClient(UUID uuid) {
-        int i = findConnectedClient(uuid);
-        if(i != -1) connectedClients.remove(i);
+        ConnectedClient c = connectedClients.get(uuid);
+        if(c != null) connectedClients.remove(uuid);
     }
 
     /**
      * Method to process the movements in the <code>World</code>
      */
     public void processMovements() {
-        for(Map.Entry<UUID, Component> e : world) {
-            Component c = e.getValue();
+        for(Map.Entry<UUID, IdentifiableComponent> e : world) {
+            IdentifiableComponent c = e.getValue();
             if(c instanceof Movable) ((Movable)c).move();
         }
-    }
-
-    /**
-     * Method to find a <code>ConnectedClient</code>
-     * @param uuid The <code>UUID</code>
-     * @return The <code>int</code> index, -1 if not found
-     */
-    private int findConnectedClient(UUID uuid) {
-        for(int i = 0; i < connectedClients.size(); i++) {
-            if(connectedClients.get(i).getUUID() == uuid) return i;
-        }
-        return -1;
     }
 }

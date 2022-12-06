@@ -23,10 +23,10 @@ public class KeyboardListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyChar()) {
-            case 'a' -> Main.gameClient.setMovement(new Vector.Float(-0.1F, 0F));
-            case 'd' -> Main.gameClient.setMovement(new Vector.Float(0.1F, 0F));
-            case 's' -> Main.gameClient.setMovement(new Vector.Float(0F, -0.1F));
-            case 'w' -> Main.gameClient.setMovement(new Vector.Float(0F, 0.1F));
+            case 'a' -> Main.client.setMovement(new Vector.Float(-0.1F, 0F));
+            case 'd' -> Main.client.setMovement(new Vector.Float(0.1F, 0F));
+            case 's' -> Main.client.setMovement(new Vector.Float(0F, -0.1F));
+            case 'w' -> Main.client.setMovement(new Vector.Float(0F, 0.1F));
         }
     }
 
@@ -38,6 +38,6 @@ public class KeyboardListener implements KeyListener {
     public void keyReleased(KeyEvent e) {
         char key = e.getKeyChar();
         if(key == 'a' || key == 'd' || key == 's' || key == 'w')
-            Main.gameClient.setMovement(new Vector.Float(0F,0F));
+            Main.client.setMovement(new Vector.Float(0F,0F));
     }
 }

@@ -1,68 +1,72 @@
 package net.pyrix25633.fbi.gui;
 
-import net.pyrix25633.fbi.client.GameClient;
-import net.pyrix25633.fbi.component.Component;
+import net.pyrix25633.fbi.client.Client;
 import net.pyrix25633.fbi.component.GUIComponent;
+import net.pyrix25633.fbi.component.IdentifiableGUIComponent;
 import net.pyrix25633.fbi.util.HitBox;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.UUID;
 
-public class GameWindow extends JFrame {
-    private final GamePanel panel;
+public class Window extends JFrame {
+    private final Panel panel;
 
     /**
      * Constructor
      * @param helper The <code>GUIHelper</code>
      */
-    public GameWindow(GUIHelper helper) {
+    public Window(GUIHelper helper) {
         super();
         this.setSize(600, 400);
-        this.setTitle("FBI: Special Agent " + GameClient.version);
+        this.setTitle("FBI: Special Agent " + Client.version);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setMinimumSize(new Dimension(576, 324));
 
-        panel = new GamePanel(helper);
+        panel = new Panel(helper);
         this.add(panel);
 
         this.setVisible(true);
         panel.requestFocus();
     }
 
+    /**
+     * Method to get the <code>Window</code> dimension
+     * @return The <code>HitBox.Integer</code>
+     */
     public HitBox.Integer getDimension() {
         return new HitBox.Integer(panel.getWidth(), panel.getHeight());
     }
 
     /**
-     * Method to add a <code>GUIComponent</code> to the <code>GameWindow</code>'s <code>GamePanel</code>
-     * @param component The <code>GUIComponent</code>
+     * Method to add a <code>IdentifiableGUIComponent</code> to the <code>Window</code>'s <code>Panel</code>
+     * @param component The <code>IdentifiableGUIComponent</code>
      */
-    public void add(GUIComponent component) {
+    public void add(IdentifiableGUIComponent component) {
         panel.add(component);
     }
 
     /**
      * Method to get a component with a certain <code>UUID</code>
      * @param uuid The <code>UUID</code>
-     * @return The <code>GUIComponent</code> with that <code>UUID</code>,
+     * @return The <code>IdentifiableGUIComponent</code> with that <code>UUID</code>,
      * null if it doesn't exist
      */
-    public GUIComponent get(UUID uuid) {
+    public IdentifiableGUIComponent get(UUID uuid) {
         return panel.get(uuid);
     }
 
     /**
-     * Method to remove a <code>GUIComponent</code>
-     * @param uuid The <code>UUID</code> of the <code>GUIComponent</code>
+     * Method to remove an <code>IdentifiableGUIComponent</code>
+     * @param uuid The <code>UUID</code> of the <code>IdentifiableGUIComponent</code> to remove
      */
     public void remove(UUID uuid) {
         panel.remove(uuid);
     }
 
     /**
-     * Method to empty the <code>GamePanel</code>
+     * Method to empty the <code>Panel</code>
      */
     public void empty() {
         panel.empty();

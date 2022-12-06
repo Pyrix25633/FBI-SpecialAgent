@@ -2,8 +2,8 @@ package net.pyrix25633.fbi.gui;
 
 import net.pyrix25633.fbi.Main;
 import net.pyrix25633.fbi.client.KeyboardListener;
-import net.pyrix25633.fbi.component.Component;
-import net.pyrix25633.fbi.component.GUIComponent;
+import net.pyrix25633.fbi.component.IdentifiableComponent;
+import net.pyrix25633.fbi.component.IdentifiableGUIComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,15 +11,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class GamePanel extends JPanel {
+public class Panel extends JPanel {
     private final GUIHelper helper;
-    private final HashMap<UUID, GUIComponent> components;
+    private final HashMap<UUID, IdentifiableGUIComponent> components;
 
     /**
      * Constructor
      * @param helper The <code>GUIHelper</code>
      */
-    public GamePanel(GUIHelper helper) {
+    public Panel(GUIHelper helper) {
         super();
         this.helper = helper;
         components = new HashMap<>();
@@ -27,35 +27,35 @@ public class GamePanel extends JPanel {
     }
 
     /**
-     * Method to add a <code>GUIComponent</code> to the <code>GamePanel</code>
-     * @param component The <code>GUIComponent</code>
+     * Method to add a <code>IdentifiableGUIComponent</code> to the <code>Panel</code>
+     * @param component The <code>IdentifiableGUIComponent</code>
      */
-    public void add(GUIComponent component) {
+    public void add(IdentifiableGUIComponent component) {
         components.put(component.getUUID(), component);
     }
 
     /**
      * Method to get a component with a certain <code>UUID</code>
      * @param uuid The <code>UUID</code>
-     * @return The <code>GUIComponent</code> with that <code>UUID</code>,
+     * @return The <code>IdentifiableGUIComponent</code> with that <code>UUID</code>,
      * null if it doesn't exist
      */
-    public GUIComponent get(UUID uuid) {
+    public IdentifiableGUIComponent get(UUID uuid) {
         return components.get(uuid);
     }
 
     /**
-     * Method to remove a <code>GUIComponent</code>
-     * @param uuid The <code>UUID</code> of the <code>GUIComponent</code>
+     * Method to remove an <code>IdentifiableGUIComponent</code>
+     * @param uuid The <code>UUID</code> of the <code>IdentifiableGUIComponent</code> to remove
      */
     public void remove(UUID uuid) {
-        Component component = get(uuid);
+        IdentifiableGUIComponent component = get(uuid);
         if(component != null)
             components.remove(component.getUUID());
     }
 
     /**
-     * Method to empty the <code>GamePanel</code>
+     * Method to empty the <code>Panel</code>
      */
     public void empty() {
         components.clear();
@@ -74,18 +74,18 @@ public class GamePanel extends JPanel {
     }
 
     /**
-     * Method called to paint the <code>GamePanel</code>
+     * Method called to paint the <code>Panel</code>
      * @param g The <code>Graphics</code>
      */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for(Map.Entry<UUID, Component> c : Main.gameServer.getWorld()) {
+        for(Map.Entry<UUID, IdentifiableComponent> c : Main.server.getWorld()) {
             c.getValue().paintComponent(g, helper);
         }
 
-        for(Map.Entry<UUID, GUIComponent> c : components.entrySet()) {
+        for(Map.Entry<UUID, IdentifiableGUIComponent> c : components.entrySet()) {
             c.getValue().paintComponent(g, helper);
         }
     }

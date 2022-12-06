@@ -1,53 +1,41 @@
 package net.pyrix25633.fbi;
 
-import net.pyrix25633.fbi.client.GameClient;
+import net.pyrix25633.fbi.client.Client;
 import net.pyrix25633.fbi.component.Component;
 import net.pyrix25633.fbi.component.GUIComponent;
-import net.pyrix25633.fbi.parser.GameParser;
-import net.pyrix25633.fbi.server.GameServer;
-import net.pyrix25633.fbi.util.HitBox;
-import net.pyrix25633.fbi.util.Position;
-import net.pyrix25633.fbi.util.PositionRelativeTo;
+import net.pyrix25633.fbi.resource.ResourceLoader;
+import net.pyrix25633.fbi.server.Server;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.UUID;
 
 public class Main {
-    public static GameClient gameClient;
-    public static GameServer gameServer;
-    public static GameParser gameParser;
+    public static Client client;
+    public static Server server;
+    public static ResourceLoader resourceLoader;
 
     /**
      * Program entrypoint
      * @param args Program arguments
      */
     public static void main(String[] args) throws InterruptedException, IOException {
-        gameServer = new GameServer();
+        server = new Server();
 
-        gameClient = new GameClient();
+        client = new Client();
 
-        gameParser = new GameParser();
+        resourceLoader = new ResourceLoader();
 
-        gameServer.getWorld().add(gameClient.getConnectedClient().getPlayer());
-        //gameServer.getWorld().add(new Component(new Position.Float(12F, 19F), new HitBox.Float(1F, 1F)));
-        //gameServer.getWorld().add(new Component(new Position.Float(13F, 19F), new HitBox.Float(0.5F, 0.5F)));
-        //gameServer.getWorld().add(new Component(new Position.Float(14F, 19F), new HitBox.Float(2F, 2F)));
-
-        gameClient.getConnectedClient().getPosition().set(10F, 20F);
-
-        gameServer.setConnectedClientPosition(gameClient.getConnectedClient());
-
-        gameParser.loadGUI("main");
+        resourceLoader.loadGUI("main");
+        resourceLoader.loadWorld("training");
 
         while(true) {
-            gameServer.processMovements();
-            gameClient.repaint();
+            server.processMovements();
+            client.repaint();
             Thread.sleep(1000 / 60);
         }
     }
 
     public static UUID generateUUID(Component component) {
-        return (component instanceof GUIComponent) ? gameClient.getWindow().generateUUID() : gameServer.generateUUID();
+        return (component instanceof GUIComponent) ? client.getWindow().generateUUID() : server.generateUUID();
     }
 }
