@@ -1,6 +1,7 @@
 package net.pyrix25633.fbi.component;
 
 import net.pyrix25633.fbi.gui.GUIHelper;
+import net.pyrix25633.fbi.resource.Texture;
 import net.pyrix25633.fbi.util.HitBox;
 import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.util.PositionRelativeTo;
@@ -14,9 +15,11 @@ public class GUIComponent extends Component {
      * @param position The <code>Position.Float</code>
      * @param hitBox The <code>HitBox.Float</code>
      * @param positionRelativeTo The <code>PositionRelativeTo</code>
+     * @param texture The <code>Texture</code>
      */
-    public GUIComponent(Position.Float position, HitBox.Float hitBox, PositionRelativeTo positionRelativeTo) {
-        super(position, hitBox);
+    public GUIComponent(Position.Float position, HitBox.Float hitBox,
+                        PositionRelativeTo positionRelativeTo, Texture texture) {
+        super(position, hitBox, texture);
         this.positionRelativeTo = positionRelativeTo;
     }
 
@@ -32,7 +35,6 @@ public class GUIComponent extends Component {
         HitBox.Integer calculatedHitBox = helper.calculateHitBox(hitBox);
         Position.Integer calculatedPosition = helper.calculateWindowRelativePosition(position, calculatedHitBox, positionRelativeTo);
 
-        g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
-                calculatedHitBox.getWidth(), calculatedHitBox.getHeight(), false);
+        texture.draw(calculatedPosition, calculatedHitBox, g);
     }
 }

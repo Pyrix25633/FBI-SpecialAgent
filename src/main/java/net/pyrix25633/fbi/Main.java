@@ -20,10 +20,8 @@ public class Main {
      */
     public static void main(String[] args) throws InterruptedException, IOException {
         server = new Server();
-
-        client = new Client();
-
         resourceLoader = new ResourceLoader();
+        client = new Client();
 
         resourceLoader.loadGUI("main");
         resourceLoader.loadWorld("training");

@@ -1,9 +1,12 @@
 package net.pyrix25633.fbi.server;
 
+import net.pyrix25633.fbi.Main;
 import net.pyrix25633.fbi.client.ConnectedClient;
 import net.pyrix25633.fbi.component.IdentifiableComponent;
 import net.pyrix25633.fbi.component.Movable;
 import net.pyrix25633.fbi.component.Player;
+import net.pyrix25633.fbi.resource.PartialTexture;
+import net.pyrix25633.fbi.resource.Texture;
 import net.pyrix25633.fbi.util.HitBox;
 import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.world.World;
@@ -50,7 +53,9 @@ public class Server {
      * @return The <code>ConnectedClient</code>
      */
     public ConnectedClient connectClient() {
-        ConnectedClient connectedClient = new ConnectedClient(new Player(null, new Position.Float(0F, 0F), new HitBox.Float(1F, 1F)));
+        ConnectedClient connectedClient = new ConnectedClient(new Player(null, new Position.Float(0F, 0F),
+                new HitBox.Float(1F, 1F), new PartialTexture(Main.resourceLoader.getImage("test"),
+                new Position.Integer(2, 2), new Position.Integer(14, 14))));
         connectedClients.put(connectedClient.getUUID(), connectedClient);
         return connectedClient;
     }

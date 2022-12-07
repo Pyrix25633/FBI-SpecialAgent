@@ -1,6 +1,7 @@
 package net.pyrix25633.fbi.component;
 
 import net.pyrix25633.fbi.gui.GUIHelper;
+import net.pyrix25633.fbi.resource.Texture;
 import net.pyrix25633.fbi.util.HitBox;
 import net.pyrix25633.fbi.util.Position;
 
@@ -10,15 +11,18 @@ import java.awt.*;
 public class Component extends JComponent {
     protected final Position.Float position;
     protected final HitBox.Float hitBox;
+    protected final Texture texture;
 
     /**
      * Constructor
      * @param position The <code>Position.Float</code>
      * @param hitBox The <code>HitBox.Float</code>
+     * @param texture The <code>Texture</code>
      */
-    public Component(Position.Float position, HitBox.Float hitBox) {
+    public Component(Position.Float position, HitBox.Float hitBox, Texture texture) {
         this.position = position;
         this.hitBox = hitBox;
+        this.texture = texture;
     }
 
     /**
@@ -32,8 +36,7 @@ public class Component extends JComponent {
         HitBox.Integer calculatedHitBox = helper.calculateHitBox(hitBox);
         Position.Integer calculatedPosition = helper.calculateWorldWindowPosition(position, calculatedHitBox);
 
-        g.fill3DRect(calculatedPosition.getX(), calculatedPosition.getY(),
-                calculatedHitBox.getWidth(), calculatedHitBox.getHeight(), false);
+        texture.draw(calculatedPosition, calculatedHitBox, g);
     }
 
     /**
