@@ -159,5 +159,14 @@ public class Position {
         public int getY() {
             return y;
         }
+
+        /**
+         * Method to get a <code>Position.Integer</code> from a <code>JSONObject</code>
+         * @param object The <code>JSONObject</code>
+         * @return The <code>Position.Integer</code>
+         */
+        public static Integer fromJSON(JSONObject object) {
+            return new Integer(object.getInt(ResourceLoader.XKEY), object.getInt(ResourceLoader.YKEY));
+        }
     }
 }

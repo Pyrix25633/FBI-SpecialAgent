@@ -54,8 +54,7 @@ public class Server {
      */
     public ConnectedClient connectClient() {
         ConnectedClient connectedClient = new ConnectedClient(new Player(null, new Position.Float(0F, 0F),
-                new HitBox.Float(1F, 1F), new PartialTexture(Main.resourceLoader.getImage("test"),
-                new Position.Integer(2, 2), new Position.Integer(14, 14))));
+                new HitBox.Float(1F, 1F), Main.resourceLoader.getCharTexture('G')));
         connectedClients.put(connectedClient.getUUID(), connectedClient);
         return connectedClient;
     }
