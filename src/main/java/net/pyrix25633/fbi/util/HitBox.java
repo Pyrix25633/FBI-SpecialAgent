@@ -20,7 +20,7 @@ public class HitBox {
          * @return The <code>HitBox.Float</code>
          */
         public static Float fromJSON(JSONObject object) {
-            return new Float(object.getFloat(ResourceLoader.WKEY), object.getFloat(ResourceLoader.HKEY));
+            return new Float(object.getFloat(ResourceLoader.WIDTH), object.getFloat(ResourceLoader.HEIGHT));
         }
     }
 

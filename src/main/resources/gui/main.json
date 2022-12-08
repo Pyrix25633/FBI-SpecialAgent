@@ -10,5 +10,12 @@
     "hitBox": {"width": 1.0, "height": 1.0},
     "positionRelativeTo": {"x": "right", "y": "bottom"},
     "texture": "test"
+  },
+  "00000000-0000-0000-0001-000000000000": {
+    "position": {"x": 0.0, "y": 0.0},
+    "hitBox": {"width": 2.625, "height": 1.125},
+    "positionRelativeTo": {"x": "left", "y": "top"},
+    "type": "text",
+    "text": "Hello\nWorld!"
   }
 }

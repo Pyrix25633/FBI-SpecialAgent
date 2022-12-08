@@ -83,7 +83,7 @@ public class Position {
          * @return The <code>Position.Float</code>
          */
         public static Float fromJSON(JSONObject object) {
-            return new Float(object.getFloat(ResourceLoader.XKEY), object.getFloat(ResourceLoader.YKEY));
+            return new Float(object.getFloat(ResourceLoader.X), object.getFloat(ResourceLoader.Y));
         }
     }
 
@@ -166,7 +166,7 @@ public class Position {
          * @return The <code>Position.Integer</code>
          */
         public static Integer fromJSON(JSONObject object) {
-            return new Integer(object.getInt(ResourceLoader.XKEY), object.getInt(ResourceLoader.YKEY));
+            return new Integer(object.getInt(ResourceLoader.X), object.getInt(ResourceLoader.Y));
         }
     }
 }

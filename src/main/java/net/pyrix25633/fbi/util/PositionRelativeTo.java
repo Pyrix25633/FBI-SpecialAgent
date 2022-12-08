@@ -48,8 +48,8 @@ public class PositionRelativeTo {
      * @return The <code>HitBox.Float</code>
      */
     public static PositionRelativeTo fromJSON(JSONObject object) {
-        return new PositionRelativeTo(X.fromString(object.getString(ResourceLoader.XKEY)),
-                Y.fromString(object.getString(ResourceLoader.YKEY)));
+        return new PositionRelativeTo(X.fromString(object.getString(ResourceLoader.X)),
+                Y.fromString(object.getString(ResourceLoader.Y)));
     }
 
     public enum X {
