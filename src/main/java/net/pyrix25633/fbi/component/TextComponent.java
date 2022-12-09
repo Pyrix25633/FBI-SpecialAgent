@@ -2,6 +2,8 @@ package net.pyrix25633.fbi.component;
 
 import net.pyrix25633.fbi.Main;
 import net.pyrix25633.fbi.gui.GUIHelper;
+import net.pyrix25633.fbi.resource.Texture;
+import net.pyrix25633.fbi.util.Color;
 import net.pyrix25633.fbi.util.HitBox;
 import net.pyrix25633.fbi.util.Position;
 import net.pyrix25633.fbi.util.PositionRelativeTo;
@@ -34,11 +36,13 @@ public class TextComponent extends IdentifiableGUIComponent {
      */
     public void setText(String text) {
         characters = new ArrayList<>();
-        float startX = (positionRelativeTo.getX() == PositionRelativeTo.X.RIGHT) ? position.getX() - hitBox.getWidth() :
+        float startX = (positionRelativeTo.getX() == PositionRelativeTo.X.RIGHT) ?
+                position.getX() - hitBox.getWidth() + CHARW:
                 position.getX(), x = startX;
-        System.out.println("Start position: " + startX);
-        float y = (positionRelativeTo.getY() == PositionRelativeTo.Y.BOTTOM) ? position.getY() - hitBox.getHeight() :
+        float y = (positionRelativeTo.getY() == PositionRelativeTo.Y.BOTTOM) ?
+                position.getY() - hitBox.getHeight() + CHARH:
                 position.getY();
+        Color color = Color.WHITE;
         for(int i = 0; i < text.length(); i++) {
             Character c = text.charAt(i);
             switch(c) {
@@ -47,11 +51,12 @@ public class TextComponent extends IdentifiableGUIComponent {
                     y += YSTEP;
                 }
                 case '§' -> {
-                    //TODO: coloring
+                    i++;
+                    color = Color.fromChar(text.charAt(i));
                 }
                 default -> {
                     characters.add(new GUIComponent(new Position.Float(x, y), new HitBox.Float(CHARW, CHARH),
-                            positionRelativeTo, Main.resourceLoader.getCharTexture(c)));
+                            positionRelativeTo, Main.resourceLoader.getCharTexture(c, color)));
                     x += XSTEP;
                 }
             }

@@ -51,12 +51,12 @@ public class GUIHelper {
         int x = (int)switch(positionRelativeTo.getX()) {
             case LEFT -> scaledPosition.getX();
             case CENTER -> windowDimension.getWidth() / 2F + scaledPosition.getX();
-            case RIGHT -> windowDimension.getWidth() - scaledHitBox.getWidth() - scaledPosition.getX();
+            case RIGHT -> windowDimension.getWidth() - scaledHitBox.getWidth() + scaledPosition.getX();
         };
         int y = (int)switch(positionRelativeTo.getY()) {
             case TOP -> scaledPosition.getY();
             case CENTER -> windowDimension.getHeight() / 2F + scaledPosition.getY();
-            case BOTTOM -> windowDimension.getHeight() - scaledHitBox.getHeight() - scaledPosition.getY();
+            case BOTTOM -> windowDimension.getHeight() - scaledHitBox.getHeight() + scaledPosition.getY();
         };
         return new Position.Integer(x, y);
     }
@@ -76,7 +76,7 @@ public class GUIHelper {
     public void calculateScale() {
         Window window = Main.client.getWindow();
         windowDimension = window.getDimension();
-        scale = Math.max(windowDimension.getWidth() / 32, windowDimension.getHeight() / 18);
+        scale = Math.max(windowDimension.getWidth() / 320, windowDimension.getHeight() / 180) * 10;
         scaledClientHitBox = calculateHitBox(Main.client.getConnectedClient().getPlayer().getHitBox());
     }
 
